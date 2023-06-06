@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="row gap-4 mb-4 mt-5">
+        <h2 class="text-center">ToDo</h2>
+    </div>
+    <div class="row">
+        <h3 class="text-center">Editar Tarefa</h3>
+        <form action="{{ url_for('update', task_id=task[0]) }}" method="post">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="title" class="form-label">Título:</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ task[1] }}" required>
+            <label for="description" class="form-label">Descrição:</label>
+            <textarea id="description" class="form-control" name="description">{{ task[2] }}</textarea>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mb-3 mt-3">Salvar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
